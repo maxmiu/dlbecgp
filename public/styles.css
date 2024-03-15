@@ -27,3 +27,11 @@ nav>ul>li {
 li>a {
     color: white;
 }
+
+th { 
+    font-weight: 800;
+}
+
+th, td {
+    padding: 12px 16px;
+}
