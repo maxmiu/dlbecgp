@@ -25,7 +25,7 @@ class Booking
     public static function new(DateRange $dateRange, Contact $contact, $frameSizes, string $notes)
     {
         $id = uniqid();
-        $createdAt = date('yyyy-MM-dd hh:mm');
+        $createdAt = date('Y-m-d H:i');
         return new Booking($id, $createdAt, $dateRange, $contact, $frameSizes, $notes);
     }
 

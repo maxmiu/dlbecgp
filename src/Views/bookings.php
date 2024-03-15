@@ -17,6 +17,7 @@
     <thead>
         <tr>
             <th>Booking ID</th>
+            <th>Created at</th>
             <th>Days</th>
             <th>Hotel</th>
             <th>Name</th>
@@ -32,6 +33,7 @@
         <?php foreach ($bookings as $booking) : ?>
             <tr>
                 <td>#<?= $booking->id ?></td>
+                <td><?= $booking->createdAt ?></td>
                 <td><?= $booking->dateRange->getDaysDiff() ?></td>
                 <td><?= $booking->contact->hotel ?></td>
                 <td><?= $booking->contact->name ?></td>
