@@ -8,7 +8,6 @@ class Router
 
     private function addRoute($route, $controller, $action, $method)
     {
-
         $this->routes[$method][$route] = ['controller' => $controller, 'action' => $action];
     }
 
@@ -30,7 +29,6 @@ class Router
         if (array_key_exists($uri, $this->routes[$method])) {
             $controller = $this->routes[$method][$uri]['controller'];
             $action = $this->routes[$method][$uri]['action'];
-
             $controller = new $controller();
             $controller->$action();
         } else {
