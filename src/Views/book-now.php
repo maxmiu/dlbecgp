@@ -1,6 +1,12 @@
 <title>Book now</title>
+<style>
+    th {
+        padding-right: 24px;
+    }
+
+</style>
 <div style="text-align: center;">
-    <h2>Book now!</h2>
+    <h1>Book now!</h1>
     <p>
         Welcome to the Tourist Bike GmbH eBike Booking Platform. Please fill out the form below to request eBikes for your hotel. Our team will review your request and confirm your booking promptly.
     </p>
@@ -49,7 +55,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr style="width: 800px;">
                     <th>
                         <input name="frameSizeXS" style="width: 50px; text-align: center;" value="0" type="number">
                     </th>

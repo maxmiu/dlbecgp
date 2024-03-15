@@ -1,6 +1,19 @@
 <title>View Bookings</title>
 <h2>View Bookings</h2>
-<table>
+<style>
+    .bookings-table {
+        width: 100%;
+    }
+    th {
+        font-weight: bold;
+    }
+    th,
+    td {
+        padding: 12px 16px;
+        text-align: center;
+    }
+</style>
+<table class="bookings-table">
     <thead>
         <tr>
             <th>Booking ID</th>
