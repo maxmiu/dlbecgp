@@ -1,0 +1,29 @@
+:root {
+    --primary: #004BA8;
+    --white: #ffffff;
+}
+
+body {
+    margin: 0;
+}
+
+nav>ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary);
+}
+
+footer {
+    background-color: var(--primary);
+}
+
+nav>ul>li {
+    display: inline;
+    font-size: 24px;
+    padding: 8px;
+}
+
+li>a {
+    color: white;
+}

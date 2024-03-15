@@ -1,0 +1,16 @@
+{
+    "name": "maxmiu/dlbecgp",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "maxmiu",
+            "email": "maximilian.moeller1@iubh-fernstudium.de"
+        }
+    ],
+    "require": {}
+}
