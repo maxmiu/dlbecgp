@@ -28,6 +28,13 @@ class BookingsController extends Controller
         $this->render('bookings', ['bookings' => $bookings]);
     }
 
+    public function success()
+    {
+        $id = $_GET['id'];
+        $booking = $this->database->getById($id);
+        $this->render('booking-success', ['booking' => $booking]);
+    }
+
     public function book()
     {
         $notes = $_POST["notes"];
@@ -35,10 +42,22 @@ class BookingsController extends Controller
         $to = $_POST["to"];
         $hotel = $_POST["hotel"];
         $dateRange = new DateRange($from, $to);
+        if (strtotime($from) > strtotime($to)) {
+            $this->render('book-now', ['errors' => [
+                'dateRange' => 'From must be before to'
+            ]]);
+            return;
+        }
         $frameSizes = $this->getFrameSizes();
-        $booking = new Booking($dateRange, $hotel, $frameSizes, $notes);
+        $booking = Booking::new($dateRange, $hotel, $frameSizes, $notes);
+        if ($booking->getTotalAmount() == 0) {
+            $this->render('book-now', ['errors' => [
+                'frameSizes' => 'You must atleast book one bike'
+            ]]);
+            return;
+        }
         $this->database->addBookings($booking);
-        $this->redirect("/bookings");
+        $this->redirect('booking-success?id=' . $booking->id);
     }
 
     private function getFrameSizes()
@@ -49,11 +68,11 @@ class BookingsController extends Controller
         $l = $_POST["frameSizeL"];
         $xl = $_POST["frameSizeXL"];
         return [
-            ["frameSize" => FrameSize::XS, "amount" => $xs],
-            ["frameSize" => FrameSize::S, "amount" => $s],
-            ["frameSize" => FrameSize::M, "amount" => $m],
-            ["frameSize" => FrameSize::L, "amount" => $l],
-            ["frameSize" => FrameSize::XL, "amount" => $xl],
+            (object)["frameSize" => FrameSize::XS, "amount" => $xs],
+            (object)["frameSize" => FrameSize::S, "amount" => $s],
+            (object)["frameSize" => FrameSize::M, "amount" => $m],
+            (object)["frameSize" => FrameSize::L, "amount" => $l],
+            (object)["frameSize" => FrameSize::XL, "amount" => $xl],
         ];
     }
 }

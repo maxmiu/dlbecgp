@@ -4,6 +4,7 @@ namespace App\Database;
 
 use App\Models\Booking;
 use App\Models\DateRange;
+use Error;
 
 class Database
 {
@@ -17,9 +18,21 @@ class Database
         $bookingsRaw = file_get_contents($this->bookingsFile);
         $bookings = array_map(function ($b) {
             $dateRange = new DateRange($b->dateRange->from, $b->dateRange->to);
-            return new Booking($dateRange, $b->hotel, $b->frameSizes, $b->notes);
+            return new Booking($b->id, $b->createdAt, $dateRange, $b->hotel, $b->frameSizes, $b->notes);
         }, json_decode($bookingsRaw));
         return $bookings;
+    }
+
+    public function getById($id)
+    {
+        $bookings = $this->getBookings();
+        $result = array_filter($bookings, function ($booking) use ($id) {
+            return $booking->id == $id;
+        });
+        if (empty($result) || count($result) > 1) {
+            throw new Error("Unable to find single array entry with id " . $id);
+        }
+        return current($result);
     }
 
     public function addBookings(Booking $booking)

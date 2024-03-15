@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use DateTime;
+
 class DateRange
 {
     public string $from;
@@ -11,5 +13,13 @@ class DateRange
     {
         $this->from = $from;
         $this->to = $to;
+    }
+
+    public function getDaysDiff()
+    {
+        $to = new DateTime($this->to);
+        $from = new DateTime($this->from);
+        $diff= $to->diff($from);
+        return $diff->d;
     }
 }

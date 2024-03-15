@@ -1,10 +1,15 @@
 :root {
     --primary: #004BA8;
+    --secondary: #ACCBE1;
+    --sucess: #62C370;
+    --error: #CC3363;
     --white: #ffffff;
+    --background: #CEE5F2;
 }
 
 body {
     margin: 0;
+    background-color: var(--background);
 }
 
 nav>ul {
@@ -28,10 +33,59 @@ li>a {
     color: white;
 }
 
-th { 
-    font-weight: 800;
+table {
+    width: 100%;
 }
 
-th, td {
+th {
+    font-weight: bold;
+}
+
+th,
+td {
     padding: 12px 16px;
+    text-align: center;
+}
+
+input[type=text],
+input[type=date],
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=number] {
+    width: 100%;
+    padding: 12px 5px;
+    box-sizing: border-box;
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+label {
+    font-size: 32px;
+}
+
+button {
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    background-color: var(--primary);
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.error {
+    color: var(--error);
+}
+
+.success {
+    color: var(--sucess);
 }
