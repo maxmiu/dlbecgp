@@ -1,10 +1,24 @@
 <title>Book now</title>
-<h2>Book now!</h2>
+<div style="text-align: center;">
+    <h2>Book now!</h2>
+    <p>
+        Welcome to the Tourist Bike GmbH eBike Booking Platform. Please fill out the form below to request eBikes for your hotel. Our team will review your request and confirm your booking promptly.
+    </p>
+</div>
 <form action="/book" method="POST">
-    <h3>Please let us know how many bikes you need:</h3>
-    <div>
-        <label for="hotel">Hotel:</label>
-        <input required placeholder="Hotel" type="text" name="hotel">
+    <div style="display: flex; flex-direction: row; margin-top: 24px;">
+        <div>
+            <label for="hotel">Hotel:</label>
+            <input value="Schlosshotel" required placeholder="Hotel" type="text" name="hotel">
+        </div>
+        <div style="margin-left: 24px;">
+            <label for="hotel">Name:</label>
+            <input value="John Doe" required placeholder="Name" type="text" name="name">
+        </div>
+        <div style="margin-left: 24px;">
+            <label for="hotel">Email:</label>
+            <input value="john@schlosshotel.example" required placeholder="Email" type="email" name="email">
+        </div>
     </div>
     <div style="display: flex; flex-direction: row; margin-top: 24px;">
         <div id="from">
@@ -20,7 +34,7 @@
         </div>
     </div>
     <div id="frameSizes" style="margin-top: 24px;">
-        <label for="amount">Frame sizes:</label>
+        <label for="amount">Bike sizes:</label>
         <?php if (isset($errors) && isset($errors['frameSizes'])) : ?>
             <span class="error">* You must atleast select one bike</span>
         <?php endif; ?>
@@ -59,7 +73,7 @@
         <label for="notes">Additional notes:</label>
         <textarea name="notes" id="" cols="30" rows="5" placeholder="Something else we need to know"></textarea>
     </div>
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-top: 24px;">
         <button type="submit">Book now</button>
     </div>
 </form>

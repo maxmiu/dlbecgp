@@ -10,7 +10,19 @@
         to: <b><?= $booking->dateRange->to ?></b>
         (Total days: <?= $booking->dateRange->getDaysDiff() ?>)
     </p>
-    <button style="margin-top: 24px;">Make another booking</button>
+    <p>
+        Bikes: <?php foreach ($booking->frameSizes as $frameSize) : ?>
+            <?php if ($frameSize->amount != 0) : ?>
+                <b><?= $frameSize->frameSize ?>:</b>
+                <?= $frameSize->amount ?>;
+            <?php endif; ?>
+        <?php endforeach; ?> (Total bikes: <?= $booking->getTotalAmount() ?>)
+    </p>
+    <button style="margin-top: 24px;">
+        <a style="text-decoration: none; color: white;" href="book-now">
+            Make another booking
+        </a>
+    </button>
     <p style="margin: 128px auto; width: 420px;">
         Need Help?
         If you have any questions about your booking or need assistance, do not hesitate to contact us. Our customer service is available at +49-123456789 or via email at

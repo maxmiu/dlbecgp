@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controller;
 use App\Database\Database;
 use App\Models\Booking;
+use App\Models\Contact;
 use App\Models\DateRange;
 use App\Models\FrameSize;
 
@@ -41,7 +42,10 @@ class BookingsController extends Controller
         $from = $_POST["from"];
         $to = $_POST["to"];
         $hotel = $_POST["hotel"];
+        $name = $_POST["name"];
+        $email = $_POST["email"];
         $dateRange = new DateRange($from, $to);
+        $contact = new Contact($hotel, $name, $email);
         if (strtotime($from) > strtotime($to)) {
             $this->render('book-now', ['errors' => [
                 'dateRange' => 'From must be before to'
@@ -49,7 +53,7 @@ class BookingsController extends Controller
             return;
         }
         $frameSizes = $this->getFrameSizes();
-        $booking = Booking::new($dateRange, $hotel, $frameSizes, $notes);
+        $booking = Booking::new($dateRange, $contact, $frameSizes, $notes);
         if ($booking->getTotalAmount() == 0) {
             $this->render('book-now', ['errors' => [
                 'frameSizes' => 'You must atleast book one bike'

@@ -3,6 +3,7 @@
 namespace App\Database;
 
 use App\Models\Booking;
+use App\Models\Contact;
 use App\Models\DateRange;
 use Error;
 
@@ -18,7 +19,8 @@ class Database
         $bookingsRaw = file_get_contents($this->bookingsFile);
         $bookings = array_map(function ($b) {
             $dateRange = new DateRange($b->dateRange->from, $b->dateRange->to);
-            return new Booking($b->id, $b->createdAt, $dateRange, $b->hotel, $b->frameSizes, $b->notes);
+            $contact = new Contact($b->contact->hotel, $b->contact->name, $b->contact->email);
+            return new Booking($b->id, $b->createdAt, $dateRange, $contact, $b->frameSizes, $b->notes);
         }, json_decode($bookingsRaw));
         return $bookings;
     }

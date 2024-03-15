@@ -12,7 +12,7 @@
 
 <body> 
     <?php include "navbar.php"; ?>
-    <div style="padding:12px;">
+    <div style="padding:24px;">
         <?php include "$view.php"; ?>
     </div>
     <?php include "footer.php"; ?>

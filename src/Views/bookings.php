@@ -6,6 +6,8 @@
             <th>Booking ID</th>
             <th>Days</th>
             <th>Hotel</th>
+            <th>Name</th>
+            <th>Email</th>
             <th>From</th>
             <th>To</th>
             <th>Bike Count</th>
@@ -18,7 +20,9 @@
             <tr>
                 <td>#<?= $booking->id ?></td>
                 <td><?= $booking->dateRange->getDaysDiff() ?></td>
-                <td><?= $booking->hotel ?></td>
+                <td><?= $booking->contact->hotel ?></td>
+                <td><?= $booking->contact->name ?></td>
+                <td><?= $booking->contact->email ?></td>
                 <td><?= $booking->dateRange->from ?></td>
                 <td><?= $booking->dateRange->to ?></td>
                 <td><?= $booking->getTotalAmount() ?></td>
