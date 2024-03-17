@@ -4,7 +4,7 @@
     <h2>Thank you for your booking with Tourist Bike GmbH</h2>
     <p>We are pleased to inform you that your eBike booking has been successfully completed. Below are all the important details regarding your booking:</p>
     <p>Booking Number: <b>#<?= $booking->id ?></b></p>
-    <p>Hotel: <b><?= $booking->hotel ?></b></p>
+    <p>Hotel: <b><?= $booking->contact->hotel ?></b></p>
     <p>
         From: <b><?= $booking->dateRange->from ?></b>
         to: <b><?= $booking->dateRange->to ?></b>
